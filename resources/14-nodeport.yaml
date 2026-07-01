@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: nginx-service-nodeport
+
+spec:
+  type: NodePort
+  selector:
+     name: service-test
+     environment: dev
+     project: localhelp
+     component: frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 31000
