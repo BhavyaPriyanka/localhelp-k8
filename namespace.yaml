@@ -1,0 +1,7 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+ name: localhelp
+ labels:
+  name: localhelp
+  environment: dev
