@@ -3,6 +3,7 @@ kind: Deployment
 
 metadata:
   name: mysql
+  namespace: localhelp
   labels:
     app: mysql
     purpose: deployment
