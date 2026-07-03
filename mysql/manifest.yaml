@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+    purpose: deployment
+    tier: database
+    project: localhelp
+spec:
+  replicas: 2
+
+  selector:
+      matchLabels:
+        app: mysql
+        tier: database
+        project: localhelp
+  template:
+     metadata:
+      labels:
+        app: mysql
+        tier: database
+        project: localhelp
+     spec:
+      containers:
+      - name: mysql
+        image: sbp828/mysql:v1.0
