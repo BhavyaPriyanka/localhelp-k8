@@ -23,7 +23,7 @@ spec:
         app: mysql
         tier: database
         project: localhelp
-     spec:
-      containers:
-      - name: mysql
-        image: sbp828/mysql:v1.0
+      spec:
+       containers:
+        - name: mysql
+          image: sbp828/mysql:v1.0
