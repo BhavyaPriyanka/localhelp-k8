@@ -12,7 +12,7 @@ apiVersion: apps/v1
 
 metadata:
   name: backend
-  namespace: backend
+  namespace: localhelp
   labels:
     app: backend
     purpose: deployment
@@ -38,13 +38,13 @@ spec:
         tier: backend-app
         project: localhelp
      
-      spec:
-        containers:
-          name: backend
-          image: sbp828/backend:v1.0
-          envFrom: 
+    spec:
+      containers:
+       - name: backend
+         image: sbp828/backend:v1.0
+         envFrom: 
           - configMapRef:
-            name: backend
+             name: backend
 ---
 apiVersion: v1
 kind: Service
