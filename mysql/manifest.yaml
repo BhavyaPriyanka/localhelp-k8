@@ -33,12 +33,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql
-  namespace: expense
+  namespace: localhelp
 spec:
   selector:
-    component: mysql
-    project: expense
-    tier: db
+    app: mysql
+    tier: database
+    project: localhelp
   ports:
   - protocol: TCP
     port: 3306 #service-port
