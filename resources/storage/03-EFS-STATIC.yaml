@@ -31,7 +31,6 @@ spec:
 
 
 ---
-
 apiVersion: v1
 kind: Pod
 metadata:
@@ -43,7 +42,7 @@ spec:
   containers:
   - name: nginx
     image: nginx
-    volumeMount:
+    volumeMounts:
     - name: my-storage
       mountPath: /usr/share/nginx/html
 
@@ -51,19 +50,3 @@ spec:
   - name: my-storage
     persistentVolumeClaim:
       claimName: efs-static
-
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx-lb
-
-spec:
-  type: LoadBalancer
-  selector:
-    app: nginx
-  ports:
-    - port: 80
-      targetPort: 80
