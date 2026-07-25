@@ -5,6 +5,7 @@ metadata:
   namespace: localhelp
 data:
   nginx.conf: |
+    server {
     listen 8080;
     server_name _;
 
@@ -30,6 +31,7 @@ data:
         stub_status on;
         access_log off;
     }
+    }
 
 ---
 kind: Deployment
@@ -46,7 +48,7 @@ metadata:
 
 
 spec:
-  replicas: 2
+  replicas: 1
 
   selector:
     matchLabels:
@@ -69,7 +71,7 @@ spec:
          image: sbp828/frontend:v1.0
          volumeMounts:
           - name: nginx-conf
-            mountPath: /etc/nginx/nginx.conf
+            mountPath: /etc/nginx/http.d/default.conf
             subPath: nginx.conf
             readOnly: true
       volumes:
@@ -99,4 +101,4 @@ spec:
   ports:
   - protocol: TCP
     port: 80 #service-port
-    targetPort: 80 #target-port
+    targetPort: 8080 #target-port
