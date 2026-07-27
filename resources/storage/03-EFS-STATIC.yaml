@@ -21,7 +21,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: efs-static
 spec:
-  storageClassName: ""
   accessModes:
     - ReadWriteMany
   resources:
@@ -50,3 +49,17 @@ spec:
   - name: my-storage
     persistentVolumeClaim:
       claimName: efs-static
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-lb 
+spec:
+ type: LoadBalancer
+ selector:
+  app: nginx
+ ports:
+ - protocol: TCP
+   port: 80
+   targetPort: 80
