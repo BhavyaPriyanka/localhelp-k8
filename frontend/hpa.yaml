@@ -1,0 +1,44 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+
+metadata:
+  name: frontend-hpa
+  namespace: localhelp
+
+
+spec:
+
+  # Which deployment to scale
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: frontend
+
+  # Minimum and maximum pods
+  minReplicas: 2
+  maxReplicas: 10
+
+
+  metrics:
+
+  # CPU based scaling
+  - type: Resource
+    resource:
+
+      name: cpu
+
+      target:
+        type: Utilization
+        averageUtilization: 70
+
+
+  # Memory based scaling
+  - type: Resource
+    resource:
+
+      name: memory
+
+      target:
+        type: Utilization
+        averageUtilization: 80
+
