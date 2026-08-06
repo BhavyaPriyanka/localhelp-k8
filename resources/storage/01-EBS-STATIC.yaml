@@ -9,9 +9,10 @@ spec:
   capacity:
     storage: 5Gi
   persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: /data/ebs-static
-    type: DirectoryOrCreate
+  csi:
+    driver: ebs.csi.aws.com
+    volumeHandle: <VOLUME_ID>
+    fsType: ext4
 
 
 
@@ -22,7 +23,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: ebs-static
 spec:
-  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
@@ -45,8 +45,6 @@ spec:
     volumeMounts:
     - name: my-storage
       mountPath: /usr/share/nginx/html
-  nodeSelector:
-    topology.kubernetes.io/zone: us-east-1c
   volumes:
   - name: my-storage
     persistentVolumeClaim:

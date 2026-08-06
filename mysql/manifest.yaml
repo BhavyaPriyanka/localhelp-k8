@@ -10,7 +10,7 @@ metadata:
     tier: database
     project: localhelp
 spec:
-  replicas: 1
+  replicas: 2
 
   selector:
       matchLabels:

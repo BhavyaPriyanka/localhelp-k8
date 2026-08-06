@@ -68,7 +68,14 @@ spec:
     spec:
       containers:
        - name: frontend
-         image: sbp828/frontend:v1.0
+         image: sbp828/frontend:v1.1
+         resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+           cpu: "150m"
+           memory: "256Mi"
          volumeMounts:
           - name: nginx-conf
             mountPath: /etc/nginx/http.d/default.conf

@@ -6,5 +6,6 @@ provisioner: efs.csi.aws.com
 parameters:
   provisioningMode: efs-ap
   fileSystemId: fs-0aef513372b8ed19c # replace with your efs filesystem id
+  directoryPerms: "700"
   basePath: "/localhelp" # optional
   
