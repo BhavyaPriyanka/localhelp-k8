@@ -11,5 +11,6 @@ spec:
     imagePullPolicy: Always
   tolerarations:
   - key: "workload"
-    operator: "devops"
+    operator: "Equal"
+    value: "devops"
     effect: "NoSchedule"
