@@ -20,7 +20,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx
+  name: nginx-1
 spec:
   affinity:
     nodeAffinity:
@@ -33,5 +33,5 @@ spec:
             - devops
 
   containers:
-  - name: nginx
+  - name: nginx-1
     image: nginx
