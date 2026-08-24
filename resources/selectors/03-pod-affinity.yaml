@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis
+  labels:
+    app: redis
+spec:
+  containers:
+  - name: redis
+    image: redis
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            app: redis
+        topologyKey: kubernetes.io/hostname
+
+  containers:
+  - name: nginx
+    image: nginx
