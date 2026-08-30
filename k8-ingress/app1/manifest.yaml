@@ -36,3 +36,21 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: apps-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: app1.localhelp.online
+    http:
+      paths:
+      - path: /app1
+        pathType: Prefix
+        backend:
+          service:
+            name: app1
+            port:
+              number: 80
