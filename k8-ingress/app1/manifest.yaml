@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: app1
+  labels:
+    app: app1
+    purpose: ingress
+    tier: frontend
+spec:
+  selector:
+      matchLabels:
+        app: app1
+        tier: frontend
+        purpose: ingress
+  template:
+     metadata:
+      labels:
+        app: app1
+        tier: frontend
+        purpose: ingress
+     spec:
+      containers:
+      - name: app1
+        image: sbp828/app1:v1.0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1
+spec:
+  selector:
+    app: app1
+    purpose: ingress
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
