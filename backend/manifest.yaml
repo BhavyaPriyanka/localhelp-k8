@@ -67,6 +67,12 @@ spec:
               cpu: "150m"
               memory: "256Mi"
 
+          startupProbe:
+            tcpSocket:
+              port: 8080
+            failureThreshold: 30
+            periodSeconds: 5
+
           readinessProbe:
             tcpSocket:
              port: 8080
