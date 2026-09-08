@@ -48,7 +48,7 @@ spec:
             - |
               echo "Waiting for MySQL to be ready..."
 
-              until nc -z mysql 3306; do
+              until nc -z db-dev.localhelp.store 3306; do
                 echo "MySQL is not ready yet..."
                 sleep 2
               done
