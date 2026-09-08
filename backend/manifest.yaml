@@ -5,7 +5,7 @@ metadata:
   name: backend
   namespace: localhelp
 data:
-  DB_HOST: db-dev.localhelp.store  # this is mysql component service name
+  DB_HOST: mysql  # this is mysql component service name
   DB_PORT: "3306"
   DB_NAME: appdb
 
