@@ -6,6 +6,8 @@ metadata:
   namespace: localhelp
 data:
   DB_HOST: db-dev.localhelp.store  # this is mysql component service name
+  DB_PORT: "3306"
+  DB_NAME: appdb
 
 ---
 apiVersion: apps/v1
@@ -89,6 +91,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: backend
+            - secretRef:
+                name: backend-db
 
 ---
 apiVersion: v1
@@ -108,3 +112,13 @@ spec:
     - protocol: TCP
       port: 8080  # service-port
       targetPort: 8080  # target-port
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backend-db
+  namespace: localhelp
+type: Opaque
+stringData:
+  DB_USERNAME: appuser
+  DB_PASSWORD: localhelp
