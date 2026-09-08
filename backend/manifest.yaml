@@ -59,7 +59,7 @@ spec:
 
       containers:
         - name: backend
-          image: sbp828/backend:v1.4
+          image: sbp828/backend:v1.5
 
           resources:
             requests:
