@@ -72,21 +72,21 @@ spec:
           startupProbe:
             tcpSocket:
               port: 8080
-            failureThreshold: 60
+            failureThreshold: 36
             periodSeconds: 5
 
           readinessProbe:
             tcpSocket:
              port: 8080
-            initialDelaySeconds: 5
             periodSeconds: 5
+            failureThreshold: 3
 
           livenessProbe:
             tcpSocket:
               port: 8080
-            initialDelaySeconds: 10
+           
             periodSeconds: 10
-            failureThreshold: 5
+            failureThreshold: 3
 
           envFrom:
             - configMapRef:
