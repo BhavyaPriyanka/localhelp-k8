@@ -5,7 +5,7 @@ metadata:
   name: backend
   namespace: localhelp
 data:
-  DB_HOST: mysql  # this is mysql component service name
+  DB_HOST: db-dev.localhelp.store  # this is mysql component service name
   DB_PORT: "3306"
   DB_NAME: appdb
 
@@ -48,14 +48,14 @@ spec:
             - sh
             - -c
             - |
-              echo "Waiting for MySQL to be ready..."
+              echo "Waiting for AWS RDS..."
 
               until nc -z db-dev.localhelp.store 3306; do
                 echo "MySQL is not ready yet..."
                 sleep 2
               done
 
-              echo "MySQL is ready!"
+               echo "RDS is reachable!"
 
       containers:
         - name: backend
