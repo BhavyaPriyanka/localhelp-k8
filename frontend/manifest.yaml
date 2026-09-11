@@ -131,5 +131,5 @@ spec:
     name: frontend
     port: 80
 
-  targetGroupARN: arn:aws:elasticloadbalancing:us-east-1:837206354502:targetgroup/localhelp-dev-frontend/1b11a39d61262ea2
+  targetGroupARN: arn:aws:elasticloadbalancing:us-east-1:837206354502:targetgroup/localhelp-dev-frontend/055f464eee4f124e
   targetType: ip
